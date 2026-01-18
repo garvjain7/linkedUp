@@ -1,0 +1,51 @@
+# =================================
+# LinkedUp - Requirements
+# =================================
+
+# Core Framework
+# ---------------
+Django==4.2.8
+python-decouple==3.8
+
+# Database
+# ---------
+# psycopg2-binary==2.9.9  # Uncomment for PostgreSQL production
+
+# REST API & CORS
+# ----------------
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+
+# Testing & Development
+# ----------------------
+pytest==7.4.3
+pytest-django==4.7.0
+pytest-cov==4.1.0
+factory-boy==3.3.0
+
+# Code Quality & Formatting
+# --------------------------
+black==23.12.1
+flake8==6.1.0
+isort==5.13.2
+
+# Security & Environment
+# -----------------------
+django-environ==0.12.0
+cryptography==41.0.7
+
+# Caching & Background Tasks
+# ---------------------------
+redis==5.0.1
+celery==5.3.4
+
+# Utilities & Media
+# ------------------
+Pillow==10.1.0
+python-dateutil==2.8.2
+requests==2.31.0
+
+# Production Server
+# ------------------
+gunicorn==21.2.0
+whitenoise==6.6.0

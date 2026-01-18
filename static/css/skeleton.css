@@ -1,0 +1,352 @@
+/**
+ * LinkedUp - Skeleton Loader Styles
+ * Shimmer animations and skeleton-specific layouts
+ */
+
+/* ==================== BASE SKELETON ==================== */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #e0e0e0 0%,
+        #f0f0f0 50%,
+        #e0e0e0 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite ease-in-out;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ==================== FEED SKELETON ==================== */
+.skeleton-post {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-post-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.skeleton-post-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skeleton-post-user-info {
+    flex: 1;
+}
+
+.skeleton-post-username {
+    height: 16px;
+    width: 140px;
+    margin-bottom: 6px;
+}
+
+.skeleton-post-subtitle {
+    height: 12px;
+    width: 200px;
+    margin-bottom: 4px;
+}
+
+.skeleton-post-time {
+    height: 12px;
+    width: 80px;
+}
+
+.skeleton-post-content {
+    margin-bottom: 12px;
+}
+
+.skeleton-post-text {
+    height: 14px;
+    margin-bottom: 8px;
+}
+
+.skeleton-post-text:nth-child(2) {
+    width: 95%;
+}
+
+.skeleton-post-text:nth-child(3) {
+    width: 90%;
+}
+
+.skeleton-post-text:last-child {
+    width: 60%;
+}
+
+.skeleton-post-image {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+}
+
+.skeleton-post-stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 8px;
+}
+
+.skeleton-post-stat {
+    height: 12px;
+    width: 100px;
+}
+
+.skeleton-post-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+}
+
+.skeleton-post-action {
+    height: 32px;
+    flex: 1;
+    border-radius: 4px;
+}
+
+/* ==================== PROFILE SKELETON ==================== */
+.skeleton-profile-hero {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.skeleton-profile-cover {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px 8px 0 0;
+}
+
+.skeleton-profile-avatar-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -75px;
+    left: 24px;
+    border: 4px solid white;
+}
+
+.skeleton-profile-content {
+    padding: 90px 24px 24px;
+}
+
+.skeleton-profile-name {
+    height: 28px;
+    width: 200px;
+    margin-bottom: 8px;
+}
+
+.skeleton-profile-title {
+    height: 18px;
+    width: 300px;
+    margin-bottom: 6px;
+}
+
+.skeleton-profile-location {
+    height: 16px;
+    width: 150px;
+    margin-bottom: 16px;
+}
+
+.skeleton-profile-bio {
+    height: 14px;
+    margin-bottom: 6px;
+}
+
+.skeleton-profile-bio:last-of-type {
+    width: 80%;
+    margin-bottom: 24px;
+}
+
+.skeleton-profile-stats {
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.skeleton-profile-stat {
+    text-align: center;
+}
+
+.skeleton-profile-stat-value {
+    height: 24px;
+    width: 60px;
+    margin: 0 auto 6px;
+}
+
+.skeleton-profile-stat-label {
+    height: 14px;
+    width: 80px;
+    margin: 0 auto;
+}
+
+/* ==================== NOTIFICATION SKELETON ==================== */
+.skeleton-notification {
+    display: flex;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.skeleton-notification-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skeleton-notification-content {
+    flex: 1;
+}
+
+.skeleton-notification-text {
+    height: 14px;
+    margin-bottom: 6px;
+}
+
+.skeleton-notification-text:nth-child(1) {
+    width: 90%;
+}
+
+.skeleton-notification-text:nth-child(2) {
+    width: 75%;
+    margin-bottom: 8px;
+}
+
+.skeleton-notification-time {
+    height: 12px;
+    width: 80px;
+}
+
+/* ==================== VARIATIONS ==================== */
+/* Skeleton post without image */
+.skeleton-post.no-image .skeleton-post-image {
+    display: none;
+}
+
+.skeleton-post.no-image .skeleton-post-content {
+    margin-bottom: 16px;
+}
+
+/* Smaller skeleton for compact views */
+.skeleton-compact .skeleton-post {
+    padding: 12px;
+}
+
+.skeleton-compact .skeleton-post-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+.skeleton-hidden {
+    display: none !important;
+}
+
+.skeleton-visible {
+    display: block !important;
+}
+
+/* Fade in animation for real content */
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== LOADING STATES ==================== */
+.loading-container {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #0a66c2;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .skeleton-post-image {
+        height: 250px;
+    }
+    
+    .skeleton-profile-cover {
+        height: 120px;
+    }
+    
+    .skeleton-profile-avatar-large {
+        width: 100px;
+        height: 100px;
+        bottom: -50px;
+    }
+    
+    .skeleton-profile-content {
+        padding: 65px 16px 16px;
+    }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+/* Screen reader only text for loading states */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton {
+        animation: none;
+        background: #e0e0e0;
+    }
+    
+    .fade-in {
+        animation: none;
+    }
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed | LinkedUp</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+</head>
+<body>
+    <!-- NAVIGATION - Always visible, never skeleton -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="nav-logo">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+                    <rect width="34" height="34" rx="4" fill="#0a66c2"/>
+                    <path d="M10 24V14h3v10h-3zm1.5-11.5c-1 0-1.5-.5-1.5-1.5s.5-1.5 1.5-1.5 1.5.5 1.5 1.5-.5 1.5-1.5 1.5zM16 24h3v-5.5c0-1.4.6-2.5 2-2.5s2 1.1 2 2.5V24h3v-6c0-3-1.5-4.5-3.5-4.5-1.5 0-2.5.8-3 1.5V14h-3v10z" fill="white"/>
+                </svg>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search" class="search-input">
+            </div>
+            <div class="nav-items">
+                <a href="/templates/index.html" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 9v2h-2v7a3 3 0 01-3 3h-4v-6h-4v6H6a3 3 0 01-3-3v-7H1V9l11-7 5 3.18V2h3v5.09z"/>
+                    </svg>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z"/>
+                    </svg>
+                    <span class="nav-text">My Network</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17 6V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1H2v4a3 3 0 003 3h14a3 3 0 003-3V6zM9 5a1 1 0 011-1h4a1 1 0 011 1v1H9zm10 9a4 4 0 003-1.38V17a3 3 0 01-3 3H5a3 3 0 01-3-3v-4.38A4 4 0 005 14z"/>
+                    </svg>
+                    <span class="nav-text">Jobs</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z"/>
+                    </svg>
+                    <span class="nav-text">Messaging</span>
+                </a>
+                <a href="/templates/notifications.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z"/>
+                    </svg>
+                    <span class="nav-text">Notifications</span>
+                </a>
+                <a href="/templates/profile.html" class="nav-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23666'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/%3E%3C/svg%3E" alt="Me" class="nav-icon">
+                    <span class="nav-text">Me</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER - Always visible structure -->
+    <div class="main-container">
+        <!-- LEFT SIDEBAR - Always visible, never skeleton -->
+        <aside class="left-sidebar">
+            <div class="profile-card">
+                <a href="/templates/profile.html" class="profile-card" style="text-decoration: none; color: inherit; display: block; cursor: pointer;">
+                    <div class="profile-card-header">
+                        <img src="..." alt="Cover" class="cover-image">
+                        <img src="..." alt="Profile" class="profile-avatar">
+                    </div>
+                    <div class="profile-card-body">
+                        <h3 class="profile-name">Your Name</h3>
+                        <p class="profile-title">Your Title | Your Company</p>
+                        <p class="profile-location">Your Location</p>
+                    </div>
+                    <!-- rest of card -->
+                </a>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Profile viewers</span>
+                        <span class="stat-value">128</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Post impressions</span>
+                        <span class="stat-value">573</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- FEED - Content area where skeleton loads -->
+        <main class="feed">
+            <!-- CREATE POST - Always visible -->
+            <div class="create-post-card">
+                <div class="create-post-top">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='%230a66c2'%3E%3Ccircle cx='24' cy='24' r='24'/%3E%3C/svg%3E" alt="You" class="create-post-avatar">
+                    <button class="create-post-input">Start a post</button>
+                </div>
+                <div class="create-post-actions">
+                    <button class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="#378fe9">
+                            <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zm-9 12V8l6 4z"/>
+                        </svg>
+                        <span>Video</span>
+                    </button>
+                    <button class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="#5f9b41">
+                            <path d="M19 4H5a3 3 0 00-3 3v10a3 3 0 003 3h14a3 3 0 003-3V7a3 3 0 00-3-3zM8.5 13.5l2.5 3 3.5-4.5 4.5 6H5z"/>
+                        </svg>
+                        <span>Photo</span>
+                    </button>
+                    <button class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="#e16745">
+                            <path d="M3 3v15a3 3 0 003 3h9v-6h-2v4H6V5h4v2h6V3H6a3 3 0 00-3 3zm10 4h8v2h-8zm0 4h8v2h-8zm0 4h5v2h-5z"/>
+                        </svg>
+                        <span>Write article</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- FEED CONTAINER - Skeleton loads here, then replaced with real posts -->
+            <div id="feed-container">
+                <!-- Skeleton will be injected here by JavaScript -->
+                <!-- Once data loads, real posts replace the skeleton -->
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR - Always visible -->
+        <aside class="right-sidebar">
+            <div class="news-card">
+                <h3 class="news-title">LinkedUp News</h3>
+                <div class="news-item">
+                    <h4>Top stories</h4>
+                    <ul class="news-list">
+                        <li>
+                            <span class="news-text">Tech industry insights</span>
+                            <span class="news-meta">1d ago • 4,980 readers</span>
+                        </li>
+                        <li>
+                            <span class="news-text">Remote work trends</span>
+                            <span class="news-meta">2d ago • 3,245 readers</span>
+                        </li>
+                        <li>
+                            <span class="news-text">AI developments</span>
+                            <span class="news-meta">1d ago • 2,156 readers</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/static/js/skeleton_loader.js"></script>
+    <script src="/static/js/feed.js"></script>
+</body>
+</html>
