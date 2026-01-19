@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.analytics.views import (
+from api.v1.analytics.views import (
     AnalyticsDashboardView,
     EngagementMetricsView,
     PostAnalyticsView,

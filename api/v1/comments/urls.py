@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.comments.views import (
+from api.v1.comments.views import (
     CommentCreateListView,
     CommentDetailView,
     DeleteCommentView,

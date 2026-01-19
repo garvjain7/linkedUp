@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.users.views import (
+from api.v1.users.views import (
     MyProfileView,
     EditMyProfileView,
     UserSettingsView,

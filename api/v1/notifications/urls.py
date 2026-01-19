@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.notifications.views import (
+from api.v1.notifications.views import (
     NotificationListView,
     UnreadCountView,
     MarkAsReadView,

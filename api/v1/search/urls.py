@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.search.views import (
+from api.v1.search.views import (
     GlobalSearchView,
     UserSearchView,
     PostSearchView,

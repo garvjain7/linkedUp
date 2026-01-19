@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.reactions.views import (
+from api.v1.reactions.views import (
     ReactionToggleView,
     ReactionListView,
 )

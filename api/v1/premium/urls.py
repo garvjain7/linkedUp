@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.premium.views import (
+from api.v1.premium.views import (
     PremiumStatusView,
     UpgradeToPremiumView,
     CancelPremiumView,

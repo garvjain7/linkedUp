@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.feed.views import (
+from api.v1.feed.views import (
     MainFeedView,
     FollowingFeedView,
     TrendingFeedView,

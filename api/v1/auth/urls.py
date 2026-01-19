@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.auth.views import (
+from api.v1.auth.views import (
     RegisterView,
     LoginView,
     LogoutView,
