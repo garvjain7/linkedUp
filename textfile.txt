@@ -1,623 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn Home - Skeleton Loader</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: #f3f2ef;
-            color: #000000e6;
-        }
-
-        /* Navbar */
-        .navbar {
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar-container {
-            max-width: 1128px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            height: 52px;
-        }
-
-        .nav-logo {
-            width: 34px;
-            height: 34px;
-            background: #0a66c2;
-            border-radius: 4px;
-            margin-right: 8px;
-        }
-
-        .nav-search {
-            flex: 1;
-            max-width: 280px;
-            height: 34px;
-            background: #eef3f8;
-            border-radius: 4px;
-        }
-
-        .nav-items {
-            display: flex;
-            gap: 8px;
-            margin-left: auto;
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 4px 12px;
-            cursor: pointer;
-        }
-
-        .nav-icon {
-            width: 24px;
-            height: 24px;
-            background: #666;
-            border-radius: 2px;
-            margin-bottom: 4px;
-        }
-
-        .nav-text {
-            font-size: 12px;
-            color: #666;
-        }
-
-        /* Main Layout */
-        .main-container {
-            max-width: 1128px;
-            margin: 24px auto;
-            display: grid;
-            grid-template-columns: 225px 1fr 300px;
-            gap: 24px;
-            padding: 0 24px;
-        }
-
-        /* Left Sidebar */
-        .left-sidebar {
-            position: sticky;
-            top: 76px;
-            height: fit-content;
-        }
-
-        .profile-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-            margin-bottom: 8px;
-        }
-
-        .profile-card-header {
-            height: 54px;
-            background: linear-gradient(90deg, #e0e0e0 0%, #f0f0f0 50%, #e0e0e0 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            position: relative;
-        }
-
-        .profile-card-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: linear-gradient(90deg, #e0e0e0 0%, #f0f0f0 50%, #e0e0e0 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            position: absolute;
-            bottom: -36px;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 2px solid white;
-        }
-
-        .profile-card-body {
-            padding: 48px 12px 16px;
-            text-align: center;
-        }
-
-        .skeleton {
-            background: linear-gradient(90deg, #e0e0e0 0%, #f0f0f0 50%, #e0e0e0 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 4px;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .profile-name {
-            height: 16px;
-            width: 120px;
-            margin: 0 auto 8px;
-        }
-
-        .profile-title {
-            height: 14px;
-            width: 160px;
-            margin: 0 auto 4px;
-        }
-
-        .profile-location {
-            height: 12px;
-            width: 100px;
-            margin: 0 auto 16px;
-        }
-
-        .profile-stats {
-            border-top: 1px solid #e0e0e0;
-            padding: 12px;
-            text-align: left;
-        }
-
-        .stat-item {
-            height: 12px;
-            width: 140px;
-            margin-bottom: 8px;
-        }
-
-        .company-card {
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            padding: 12px;
-        }
-
-        .company-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .company-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 4px;
-        }
-
-        .company-name {
-            height: 14px;
-            width: 120px;
-        }
-
-        .company-stat {
-            height: 12px;
-            width: 80px;
-            margin-bottom: 8px;
-        }
-
-        /* Feed */
-        .feed {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .create-post-card {
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            padding: 12px 16px;
-        }
-
-        .create-post-top {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .create-post-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .create-post-input {
-            flex: 1;
-            height: 48px;
-            border-radius: 24px;
-        }
-
-        .create-post-actions {
-            display: flex;
-            gap: 16px;
-            padding-top: 8px;
-        }
-
-        .action-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .action-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 2px;
-        }
-
-        .action-text {
-            height: 14px;
-            width: 60px;
-        }
-
-        /* Post Card */
-        .post-card {
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            padding: 16px;
-            margin-bottom: 8px;
-        }
-
-        .post-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        .post-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .post-user-info {
-            flex: 1;
-        }
-
-        .post-username {
-            height: 16px;
-            width: 140px;
-            margin-bottom: 4px;
-        }
-
-        .post-subtitle {
-            height: 12px;
-            width: 200px;
-            margin-bottom: 4px;
-        }
-
-        .post-time {
-            height: 12px;
-            width: 80px;
-        }
-
-        .post-content {
-            margin-bottom: 12px;
-        }
-
-        .post-text {
-            height: 14px;
-            margin-bottom: 8px;
-        }
-
-        .post-text:last-child {
-            width: 70%;
-        }
-
-        .post-image {
-            width: 100%;
-            height: 400px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-        }
-
-        .post-stats {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #e0e0e0;
-            margin-bottom: 8px;
-        }
-
-        .post-stat {
-            height: 12px;
-            width: 100px;
-        }
-
-        .post-actions {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .post-action {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .post-action-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 2px;
-        }
-
-        .post-action-text {
-            height: 14px;
-            width: 60px;
-        }
-
-        /* Right Sidebar */
-        .right-sidebar {
-            position: sticky;
-            top: 76px;
-            height: fit-content;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .left-sidebar,
-            .right-sidebar {
-                display: none;
-            }
-        }
-
-        /* Toggle Button */
-        .demo-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            padding: 12px 20px;
-            border-radius: 24px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            cursor: pointer;
-            font-weight: 600;
-            color: #0a66c2;
-            border: 2px solid #0a66c2;
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-
-        .demo-controls:hover {
-            background: #0a66c2;
-            color: white;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="skeleton nav-logo"></div>
-            <div class="skeleton nav-search"></div>
-            <div class="nav-items">
-                <div class="nav-item">
-                    <div class="skeleton nav-icon"></div>
-                    <span class="nav-text">Home</span>
-                </div>
-                <div class="nav-item">
-                    <div class="skeleton nav-icon"></div>
-                    <span class="nav-text">Network</span>
-                </div>
-                <div class="nav-item">
-                    <div class="skeleton nav-icon"></div>
-                    <span class="nav-text">Jobs</span>
-                </div>
-                <div class="nav-item">
-                    <div class="skeleton nav-icon"></div>
-                    <span class="nav-text">Messaging</span>
-                </div>
-                <div class="nav-item">
-                    <div class="skeleton nav-icon"></div>
-                    <span class="nav-text">Notifications</span>
-                </div>
-                <div class="nav-item">
-                    <div class="skeleton nav-icon"></div>
-                    <span class="nav-text">Me</span>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Left Sidebar -->
-        <aside class="left-sidebar">
-            <!-- Profile Card -->
-            <div class="profile-card">
-                <div class="profile-card-header">
-                    <div class="profile-card-avatar skeleton"></div>
-                </div>
-                <div class="profile-card-body">
-                    <div class="skeleton profile-name"></div>
-                    <div class="skeleton profile-title"></div>
-                    <div class="skeleton profile-location"></div>
-                </div>
-                <div class="profile-stats">
-                    <div class="skeleton stat-item"></div>
-                    <div class="skeleton stat-item"></div>
-                </div>
-            </div>
-
-            <!-- Company/Page Card -->
-            <div class="company-card">
-                <div class="company-header">
-                    <div class="skeleton company-icon"></div>
-                    <div class="skeleton company-name"></div>
-                </div>
-                <div class="skeleton company-stat"></div>
-                <div class="skeleton company-stat" style="width: 60px;"></div>
-            </div>
-        </aside>
-
-        <!-- Feed -->
-        <main class="feed">
-            <!-- Create Post -->
-            <div class="create-post-card">
-                <div class="create-post-top">
-                    <div class="skeleton create-post-avatar"></div>
-                    <div class="skeleton create-post-input"></div>
-                </div>
-                <div class="create-post-actions">
-                    <div class="action-btn">
-                        <div class="skeleton action-icon"></div>
-                        <div class="skeleton action-text"></div>
-                    </div>
-                    <div class="action-btn">
-                        <div class="skeleton action-icon"></div>
-                        <div class="skeleton action-text"></div>
-                    </div>
-                    <div class="action-btn">
-                        <div class="skeleton action-icon"></div>
-                        <div class="skeleton action-text"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 1 with Image -->
-            <div class="post-card">
-                <div class="post-header">
-                    <div class="skeleton post-avatar"></div>
-                    <div class="post-user-info">
-                        <div class="skeleton post-username"></div>
-                        <div class="skeleton post-subtitle"></div>
-                        <div class="skeleton post-time"></div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <div class="skeleton post-text"></div>
-                    <div class="skeleton post-text"></div>
-                    <div class="skeleton post-text"></div>
-                </div>
-                <div class="skeleton post-image"></div>
-                <div class="post-stats">
-                    <div class="skeleton post-stat"></div>
-                    <div class="skeleton post-stat"></div>
-                </div>
-                <div class="post-actions">
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 2 without Image -->
-            <div class="post-card">
-                <div class="post-header">
-                    <div class="skeleton post-avatar"></div>
-                    <div class="post-user-info">
-                        <div class="skeleton post-username"></div>
-                        <div class="skeleton post-subtitle"></div>
-                        <div class="skeleton post-time"></div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <div class="skeleton post-text"></div>
-                    <div class="skeleton post-text"></div>
-                    <div class="skeleton post-text"></div>
-                    <div class="skeleton post-text"></div>
-                </div>
-                <div class="post-stats">
-                    <div class="skeleton post-stat"></div>
-                    <div class="skeleton post-stat"></div>
-                </div>
-                <div class="post-actions">
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 3 with Image -->
-            <div class="post-card">
-                <div class="post-header">
-                    <div class="skeleton post-avatar"></div>
-                    <div class="post-user-info">
-                        <div class="skeleton post-username"></div>
-                        <div class="skeleton post-subtitle"></div>
-                        <div class="skeleton post-time"></div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <div class="skeleton post-text"></div>
-                    <div class="skeleton post-text"></div>
-                </div>
-                <div class="skeleton post-image"></div>
-                <div class="post-stats">
-                    <div class="skeleton post-stat"></div>
-                    <div class="skeleton post-stat"></div>
-                </div>
-                <div class="post-actions">
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                    <div class="post-action">
-                        <div class="skeleton post-action-icon"></div>
-                        <div class="skeleton post-action-text"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <!-- Right Sidebar (Hidden - as per requirement) -->
-        <aside class="right-sidebar">
-            <!-- News section would go here but excluded as requested -->
-        </aside>
-    </div>
-
-    <div class="demo-controls" onclick="location.reload()">
-        ⟳ Reload Demo
-    </div>
-</body>
-</html>
+=========================================================
+api/v1/auth/urls.py
+=========================================================
+urlpatterns = [
+    path('register/', RegisterView.as_view()),
+    path('login/', LoginView.as_view()),
+    path('logout/', LogoutView.as_view()),                 # token/session invalidation
+    path('refresh/', RefreshTokenView.as_view()),
+
+    path('verify-email/', VerifyEmailView.as_view()),
+    path('verify-email/resend/', ResendVerificationView.as_view()),
+
+    path('password/reset/', PasswordResetView.as_view()),
+    path('password/reset/confirm/', PasswordResetConfirmView.as_view()),
+    path('password/change/', PasswordChangeView.as_view()),
+
+    path('deactivate/', DeactivateAccountView.as_view()),  # soft deactivate
+]
+
+=========================================================
+api/v1/users/urls.py
+=========================================================
+urlpatterns = [
+    # -------- current user (me) --------
+    path('me/profile/', MyProfileView.as_view()),
+    path('me/profile/edit/', EditMyProfileView.as_view()),
+    path('me/settings/', UserSettingsView.as_view()),
+    path('me/privacy/', PrivacySettingsView.as_view()),
+    path('me/profile-strength/', ProfileStrengthView.as_view()),
+
+    # -------- public user --------
+    path('<str:username>/', PublicUserView.as_view()),
+    path('<str:username>/profile/', PublicProfileView.as_view()),
+
+    # -------- relationships --------
+    path('<str:username>/follow/', FollowUserView.as_view()),
+    path('<str:username>/unfollow/', UnfollowUserView.as_view()),
+    path('<str:username>/mute/', MuteUserView.as_view()),
+    path('<str:username>/unmute/', UnmuteUserView.as_view()),
+    path('<str:username>/block/', BlockUserView.as_view()),
+    path('<str:username>/unblock/', UnblockUserView.as_view()),
+
+    # -------- connections (LinkedIn style) --------
+    path('<str:username>/connect/', SendConnectionRequestView.as_view()),
+    path('connections/pending/', PendingConnectionsView.as_view()),
+    path('connections/<str:username>/accept/', AcceptConnectionView.as_view()),
+    path('connections/<str:username>/reject/', RejectConnectionView.as_view()),
+
+    # -------- lists --------
+    path('<str:username>/followers/', FollowersListView.as_view()),
+    path('<str:username>/following/', FollowingListView.as_view()),
+    path('<str:username>/connections/', ConnectionsListView.as_view()),
+]
+
+=========================================================
+api/v1/posts/urls.py
+=========================================================
+urlpatterns = [
+    # -------- post lifecycle --------
+    path('', PostCreateListView.as_view()),
+    path('<str:post_uid>/', PostDetailView.as_view()),
+    path('<str:post_uid>/edit/', EditPostView.as_view()),
+    path('<str:post_uid>/delete/', DeletePostView.as_view()),   # soft delete
+
+    # -------- visibility --------
+    path('<str:post_uid>/visibility/', UpdateVisibilityView.as_view()),
+
+    # -------- media --------
+    path('<str:post_uid>/media/', PostMediaView.as_view()),
+
+    # -------- polls --------
+    path('<str:post_uid>/poll/', PollDetailView.as_view()),
+    path('<str:post_uid>/poll/vote/', PollVoteView.as_view()),
+
+    # -------- stats (read-only, cached) --------
+    path('<str:post_uid>/stats/', PostStatsView.as_view()),
+
+    # -------- moderation --------
+    path('<str:post_uid>/report/', ReportPostView.as_view()),
+]
+
+
+🚫 No repost
+🚫 No share
+
+=========================================================
+api/v1/comments/urls.py
+=========================================================
+urlpatterns = [
+    # -------- comments --------
+    path('', CommentCreateListView.as_view()),
+    path('<str:comment_uid>/', CommentDetailView.as_view()),
+    path('<str:comment_uid>/delete/', DeleteCommentView.as_view()),
+
+    # -------- replies --------
+    path('<str:comment_uid>/replies/', CommentRepliesView.as_view()),
+]
+
+=========================================================
+api/v1/reactions/urls.py
+=========================================================
+urlpatterns = [
+    # unified reaction endpoint (post/comment)
+    path('toggle/', ReactionToggleView.as_view()),
+
+    # payload:
+    # {
+    #   "target_type": "post" | "comment",
+    #   "target_uid": "...",
+    #   "reaction": "like"
+    # }
+
+    path('list/', ReactionListView.as_view()),  # internal / debugging / analytics
+]
+
+
+✔️ Endpoint exists
+✔️ UI never exposes it directly
+✔️ No ambiguity
+
+=========================================================
+api/v1/feed/urls.py
+=========================================================
+urlpatterns = [
+    path('', MainFeedView.as_view()),              # cursor based
+    path('following/', FollowingFeedView.as_view()),
+    path('trending/', TrendingFeedView.as_view()),
+    path('user/<str:username>/', UserFeedView.as_view()),
+]
+
+
+📌 Cursor pagination assumed everywhere
+📌 Feed logic heavily cached
+
+=========================================================
+api/v1/notifications/urls.py
+=========================================================
+urlpatterns = [
+    path('', NotificationListView.as_view()),
+    path('unread-count/', UnreadCountView.as_view()),
+    path('<str:notification_uid>/read/', MarkAsReadView.as_view()),
+    path('mark-all-read/', MarkAllReadView.as_view()),
+
+    # settings (important)
+    path('settings/', NotificationSettingsView.as_view()),
+]
+
+=========================================================
+api/v1/analytics/urls.py
+=========================================================
+urlpatterns = [
+    # -------- creator analytics --------
+    path('dashboard/', AnalyticsDashboardView.as_view()),
+    path('engagement/', EngagementMetricsView.as_view()),
+
+    # -------- post analytics --------
+    path('posts/<str:post_uid>/', PostAnalyticsView.as_view()),
+    path('posts/<str:post_uid>/impressions/', PostImpressionsView.as_view()),
+]
+
+
+🧠 Event ingestion NOT exposed here
+🧠 This is read-only, aggregated
+
+=========================================================
+api/v1/search/urls.py
+=========================================================
+urlpatterns = [
+    path('', GlobalSearchView.as_view()),
+    path('users/', UserSearchView.as_view()),
+    path('posts/', PostSearchView.as_view()),
+    path('suggestions/', SearchSuggestionsView.as_view()),
+]
+
+=========================================================
+api/v1/premium/urls.py
+=========================================================
+urlpatterns = [
+    path('status/', PremiumStatusView.as_view()),
+    path('upgrade/', UpgradeToPremiumView.as_view()),
+    path('cancel/', CancelPremiumView.as_view()),
+    path('history/', BillingHistoryView.as_view()),
+]
+
+=========================================================
+api/v1/router.py
+=========================================================
+urlpatterns = [
+    path('auth/', include('api.v1.auth.urls')),
+    path('users/', include('api.v1.users.urls')),
+    path('posts/', include('api.v1.posts.urls')),
+    path('comments/', include('api.v1.comments.urls')),
+    path('reactions/', include('api.v1.reactions.urls')),
+    path('feed/', include('api.v1.feed.urls')),
+    path('notifications/', include('api.v1.notifications.urls')),
+    path('analytics/', include('api.v1.analytics.urls')),
+    path('search/', include('api.v1.search.urls')),
+    path('premium/', include('api.v1.premium.urls')),
+]
