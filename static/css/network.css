@@ -1,0 +1,582 @@
+/**
+ * LinkedUp - Network Page Styles
+ * Styles for My Network page and invitations
+ */
+
+/* ==================== NETWORK PAGE LAYOUT ==================== */
+.network-layout {
+    grid-template-columns: 225px 1fr;
+    max-width: 1128px;
+}
+
+/* ==================== LEFT SIDEBAR ==================== */
+.network-sidebar-card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 12px 12px;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9);
+    transition: background 0.2s;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-item:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-item-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.sidebar-item-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(0, 0, 0, 0.6);
+}
+
+.sidebar-item-text {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sidebar-item-count {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ==================== MAIN CONTENT AREA ==================== */
+.network-content {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ==================== TABS ==================== */
+.network-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0 16px;
+}
+
+.network-tab {
+    padding: 16px 12px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s;
+}
+
+.network-tab:hover:not(.disabled) {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.network-tab.active {
+    color: #057642;
+    border-bottom-color: #057642;
+}
+
+.network-tab.disabled {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+}
+
+/* ==================== INVITATIONS SECTION ==================== */
+.invitations-section {
+    padding: 16px;
+}
+
+.invitations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.invitations-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
+    margin: 0;
+}
+
+.invitations-title span {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.show-all-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.show-all-link:hover {
+    color: #0a66c2;
+    text-decoration: underline;
+}
+
+#invitations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ==================== INVITATION CARD ==================== */
+.invitation-card {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    transition: background 0.2s;
+    animation: fadeIn 0.3s ease-out;
+    gap: 12px;
+}
+
+.invitation-card:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.invitation-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-right: 0;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.invitation-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.invitation-meta {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 4px;
+}
+
+.invitation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px 6px;
+    background: #e8f3fa;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.invitation-name-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.invitation-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.verification-badge {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.verification-badge svg {
+    fill: #0a66c2;
+}
+
+.invitation-message {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 4px;
+}
+
+.invitation-time {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.invitation-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 0;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.invitation-btn {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid;
+}
+
+.ignore-btn {
+    background: white;
+    color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.ignore-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.9);
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.accept-btn {
+    background: #0a66c2;
+    color: white;
+    border-color: #0a66c2;
+}
+
+.accept-btn:hover {
+    background: #004182;
+    border-color: #004182;
+}
+
+.accept-btn:disabled,
+.ignore-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==================== SKELETON INVITATION CARD ==================== */
+.skeleton-invitation-card {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    gap: 12px;
+}
+
+.skeleton-invitation-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.skeleton-invitation-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.skeleton-invitation-meta {
+    width: 80px;
+    height: 12px;
+}
+
+.skeleton-invitation-name {
+    width: 150px;
+    height: 14px;
+}
+
+.skeleton-invitation-message {
+    width: 200px;
+    height: 14px;
+}
+
+.skeleton-invitation-time {
+    width: 100px;
+    height: 12px;
+}
+
+.skeleton-invitation-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.skeleton-invitation-btn {
+    width: 80px;
+    height: 32px;
+    border-radius: 16px;
+}
+
+/* ==================== INVITATIONS PAGE (Show All) ==================== */
+.invitations-page-layout {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+}
+
+.invitations-page-card {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.invitations-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.invitations-page-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.settings-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.settings-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.settings-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: rgba(0, 0, 0, 0.6);
+}
+
+/* ==================== INVITATIONS TABS ==================== */
+.invitations-tabs {
+    display: flex;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.invitation-tab {
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s;
+}
+
+.invitation-tab:hover {
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.invitation-tab.active {
+    color: #057642;
+    border-bottom-color: #057642;
+}
+
+/* ==================== FILTER PILLS ==================== */
+.filter-pills {
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.filter-pill {
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-pill:hover {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.filter-pill.active {
+    background: #057642;
+    color: white;
+    border-color: #057642;
+}
+
+/* ==================== TAB CONTENT ==================== */
+.tab-content {
+    display: none;
+    padding: 16px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+#received-invitations-container,
+#sent-invitations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ==================== SKELETON SPECIFIC ==================== */
+.skeleton-invitation-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+.skeleton-invitation-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.skeleton-invitation-content {
+    flex: 1;
+}
+
+.skeleton-invitation-meta {
+    height: 12px;
+    width: 100px;
+    margin-bottom: 6px;
+}
+
+.skeleton-invitation-name {
+    height: 16px;
+    width: 150px;
+    margin-bottom: 6px;
+}
+
+.skeleton-invitation-message {
+    height: 14px;
+    width: 200px;
+    margin-bottom: 4px;
+}
+
+.skeleton-invitation-time {
+    height: 12px;
+    width: 80px;
+    margin-bottom: 8px;
+}
+
+.skeleton-invitation-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.skeleton-invitation-btn {
+    height: 32px;
+    width: 80px;
+    border-radius: 16px;
+}
+
+/* ==================== EMPTY STATE ==================== */
+.network-empty-state {
+    text-align: center;
+    padding: 48px 24px;
+}
+
+.network-empty-state svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    fill: rgba(0, 0, 0, 0.3);
+}
+
+.network-empty-state h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.network-empty-state p {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+    .network-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .network-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .invitation-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .invitation-avatar {
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+    
+    .invitation-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .filter-pills {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    
+    .filter-pills::-webkit-scrollbar {
+        display: none;
+    }
+}

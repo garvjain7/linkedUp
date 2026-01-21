@@ -3,29 +3,29 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-class AnalyticsDashboardView(APIView):
-    """Get analytics dashboard data"""
-    def get(self, request):
-        # TODO: Implement get analytics dashboard
+class ImpressionsView(APIView):
+    """Get profile impressions analytics"""
+    def get(self, request, username):
+        # TODO: Implement get impressions
         pass
 
 
-class EngagementMetricsView(APIView):
-    """Get engagement metrics"""
-    def get(self, request):
-        # TODO: Implement get engagement metrics
+class ProfileViewsView(APIView):
+    """Get profile views analytics"""
+    def get(self, request, username):
+        # TODO: Implement get profile views
         pass
 
 
-class PostAnalyticsView(APIView):
-    """Get analytics for specific post"""
-    def get(self, request, post_uid):
-        # TODO: Implement get post analytics
+class PostEngagementView(APIView):
+    """Get post engagement analytics"""
+    def get(self, request, username):
+        # TODO: Implement get post engagement
         pass
 
 
-class PostImpressionsView(APIView):
-    """Get impressions for specific post"""
-    def get(self, request, post_uid):
-        # TODO: Implement get post impressions
+class FollowersGrowthView(APIView):
+    """Get followers growth analytics"""
+    def get(self, request, username):
+        # TODO: Implement get followers growth
         pass

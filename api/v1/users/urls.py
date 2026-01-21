@@ -1,46 +1,39 @@
 from django.urls import path
 from api.v1.users.views import (
-    MyProfileView,
-    EditMyProfileView,
-    UserSettingsView,
-    PrivacySettingsView,
-    ProfileStrengthView,
-    PublicUserView,
-    PublicProfileView,
-    FollowUserView,
-    UnfollowUserView,
-    MuteUserView,
-    UnmuteUserView,
-    BlockUserView,
-    UnblockUserView,
-    SendConnectionRequestView,
-    PendingConnectionsView,
-    AcceptConnectionView,
-    RejectConnectionView,
-    FollowersListView,
-    FollowingListView,
-    ConnectionsListView,
+    UserDetailView,
+    UserContactInfoView,
+    UserMessageView,
+    UserFollowView,
+    UserUnfollowView,
+    UserBlockView,
+    UserUnblockView,
+    UserPostsView,
+    UserFollowersView,
+    UserFollowingView,
+    UserRelationshipStateView,
 )
 
 urlpatterns = [
-    path('me/profile/', MyProfileView.as_view()),
-    path('me/profile/edit/', EditMyProfileView.as_view()),
-    path('me/settings/', UserSettingsView.as_view()),
-    path('me/privacy/', PrivacySettingsView.as_view()),
-    path('me/profile-strength/', ProfileStrengthView.as_view()),
-    path('<str:username>/', PublicUserView.as_view()),
-    path('<str:username>/profile/', PublicProfileView.as_view()),
-    path('<str:username>/follow/', FollowUserView.as_view()),
-    path('<str:username>/unfollow/', UnfollowUserView.as_view()),
-    path('<str:username>/mute/', MuteUserView.as_view()),
-    path('<str:username>/unmute/', UnmuteUserView.as_view()),
-    path('<str:username>/block/', BlockUserView.as_view()),
-    path('<str:username>/unblock/', UnblockUserView.as_view()),
-    path('<str:username>/connect/', SendConnectionRequestView.as_view()),
-    path('connections/pending/', PendingConnectionsView.as_view()),
-    path('connections/<str:username>/accept/', AcceptConnectionView.as_view()),
-    path('connections/<str:username>/reject/', RejectConnectionView.as_view()),
-    path('<str:username>/followers/', FollowersListView.as_view()),
-    path('<str:username>/following/', FollowingListView.as_view()),
-    path('<str:username>/connections/', ConnectionsListView.as_view()),
+    # User detail & contact
+    path('<str:username>/', UserDetailView.as_view()),
+    path('<str:username>/contact-info/', UserContactInfoView.as_view()),
+    
+    # Messaging
+    path('<str:username>/message/', UserMessageView.as_view()),
+    
+    # Follow/Unfollow
+    path('<str:username>/follow/', UserFollowView.as_view()),
+    path('<str:username>/unfollow/', UserUnfollowView.as_view()),
+    
+    # Block/Unblock
+    path('<str:username>/block/', UserBlockView.as_view()),
+    path('<str:username>/unblock/', UserUnblockView.as_view()),
+    
+    # User content
+    path('<str:username>/posts/', UserPostsView.as_view()),
+    path('<str:username>/followers/', UserFollowersView.as_view()),
+    path('<str:username>/following/', UserFollowingView.as_view()),
+    
+    # Relationship
+    path('<str:username>/relationship-state/', UserRelationshipStateView.as_view()),
 ]

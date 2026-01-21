@@ -1,199 +1,53 @@
-=========================================================
-api/v1/auth/urls.py
-=========================================================
-urlpatterns = [
-    path('register/', RegisterView.as_view()),
-    path('login/', LoginView.as_view()),
-    path('logout/', LogoutView.as_view()),                 # token/session invalidation
-    path('refresh/', RefreshTokenView.as_view()),
+1️⃣ USER (someone else’s profile – username based)
+GET    /users/<username>/
+GET    /users/<username>/contact-info/
 
-    path('verify-email/', VerifyEmailView.as_view()),
-    path('verify-email/resend/', ResendVerificationView.as_view()),
+POST   /users/<username>/message/
 
-    path('password/reset/', PasswordResetView.as_view()),
-    path('password/reset/confirm/', PasswordResetConfirmView.as_view()),
-    path('password/change/', PasswordChangeView.as_view()),
+POST   /users/<username>/follow/
+POST   /users/<username>/unfollow/
 
-    path('deactivate/', DeactivateAccountView.as_view()),  # soft deactivate
-]
+POST   /users/<username>/block/
+POST   /users/<username>/unblock/
 
-=========================================================
-api/v1/users/urls.py
-=========================================================
-urlpatterns = [
-    # -------- current user (me) --------
-    path('me/profile/', MyProfileView.as_view()),
-    path('me/profile/edit/', EditMyProfileView.as_view()),
-    path('me/settings/', UserSettingsView.as_view()),
-    path('me/privacy/', PrivacySettingsView.as_view()),
-    path('me/profile-strength/', ProfileStrengthView.as_view()),
+GET    /users/<username>/posts/
+GET    /users/<username>/followers/
+GET    /users/<username>/following/
 
-    # -------- public user --------
-    path('<str:username>/', PublicUserView.as_view()),
-    path('<str:username>/profile/', PublicProfileView.as_view()),
+GET    /users/<username>/relationship-state/
 
-    # -------- relationships --------
-    path('<str:username>/follow/', FollowUserView.as_view()),
-    path('<str:username>/unfollow/', UnfollowUserView.as_view()),
-    path('<str:username>/mute/', MuteUserView.as_view()),
-    path('<str:username>/unmute/', UnmuteUserView.as_view()),
-    path('<str:username>/block/', BlockUserView.as_view()),
-    path('<str:username>/unblock/', UnblockUserView.as_view()),
+2️⃣ PROFILE (your own profile – me + username)
+GET    /me/<username>/
+PATCH  /me/<username>/
 
-    # -------- connections (LinkedIn style) --------
-    path('<str:username>/connect/', SendConnectionRequestView.as_view()),
-    path('connections/pending/', PendingConnectionsView.as_view()),
-    path('connections/<str:username>/accept/', AcceptConnectionView.as_view()),
-    path('connections/<str:username>/reject/', RejectConnectionView.as_view()),
+GET    /me/<username>/contact-info/
+PATCH  /me/<username>/contact-info/
 
-    # -------- lists --------
-    path('<str:username>/followers/', FollowersListView.as_view()),
-    path('<str:username>/following/', FollowingListView.as_view()),
-    path('<str:username>/connections/', ConnectionsListView.as_view()),
-]
+GET    /me/<username>/posts/
+GET    /me/<username>/comments/
+GET    /me/<username>/reactions/
+GET    /me/<username>/media/
 
-=========================================================
-api/v1/posts/urls.py
-=========================================================
-urlpatterns = [
-    # -------- post lifecycle --------
-    path('', PostCreateListView.as_view()),
-    path('<str:post_uid>/', PostDetailView.as_view()),
-    path('<str:post_uid>/edit/', EditPostView.as_view()),
-    path('<str:post_uid>/delete/', DeletePostView.as_view()),   # soft delete
+👉 Redirect / Entry to analytics (analytics handled separately)
+GET /me/<username>/analytics/
 
-    # -------- visibility --------
-    path('<str:post_uid>/visibility/', UpdateVisibilityView.as_view()),
+3️⃣ ANALYTICS (separate module, starts after entry)
+GET /me/<username>/analytics/impressions/
+GET /me/<username>/analytics/profile-views/
+GET /me/<username>/analytics/post-engagement/
+GET /me/<username>/analytics/followers-growth/
 
-    # -------- media --------
-    path('<str:post_uid>/media/', PostMediaView.as_view()),
+4️⃣ NETWORK / MYNETWORK (connections only)
+GET  /network/
 
-    # -------- polls --------
-    path('<str:post_uid>/poll/', PollDetailView.as_view()),
-    path('<str:post_uid>/poll/vote/', PollVoteView.as_view()),
+Requests
+GET  /network/requests/received/
+GET  /network/requests/sent/
 
-    # -------- stats (read-only, cached) --------
-    path('<str:post_uid>/stats/', PostStatsView.as_view()),
+Actions
+POST /network/requests/<username>/accept/
+POST /network/requests/<username>/ignore/
 
-    # -------- moderation --------
-    path('<str:post_uid>/report/', ReportPostView.as_view()),
-]
-
-
-🚫 No repost
-🚫 No share
-
-=========================================================
-api/v1/comments/urls.py
-=========================================================
-urlpatterns = [
-    # -------- comments --------
-    path('', CommentCreateListView.as_view()),
-    path('<str:comment_uid>/', CommentDetailView.as_view()),
-    path('<str:comment_uid>/delete/', DeleteCommentView.as_view()),
-
-    # -------- replies --------
-    path('<str:comment_uid>/replies/', CommentRepliesView.as_view()),
-]
-
-=========================================================
-api/v1/reactions/urls.py
-=========================================================
-urlpatterns = [
-    # unified reaction endpoint (post/comment)
-    path('toggle/', ReactionToggleView.as_view()),
-
-    # payload:
-    # {
-    #   "target_type": "post" | "comment",
-    #   "target_uid": "...",
-    #   "reaction": "like"
-    # }
-
-    path('list/', ReactionListView.as_view()),  # internal / debugging / analytics
-]
-
-
-✔️ Endpoint exists
-✔️ UI never exposes it directly
-✔️ No ambiguity
-
-=========================================================
-api/v1/feed/urls.py
-=========================================================
-urlpatterns = [
-    path('', MainFeedView.as_view()),              # cursor based
-    path('following/', FollowingFeedView.as_view()),
-    path('trending/', TrendingFeedView.as_view()),
-    path('user/<str:username>/', UserFeedView.as_view()),
-]
-
-
-📌 Cursor pagination assumed everywhere
-📌 Feed logic heavily cached
-
-=========================================================
-api/v1/notifications/urls.py
-=========================================================
-urlpatterns = [
-    path('', NotificationListView.as_view()),
-    path('unread-count/', UnreadCountView.as_view()),
-    path('<str:notification_uid>/read/', MarkAsReadView.as_view()),
-    path('mark-all-read/', MarkAllReadView.as_view()),
-
-    # settings (important)
-    path('settings/', NotificationSettingsView.as_view()),
-]
-
-=========================================================
-api/v1/analytics/urls.py
-=========================================================
-urlpatterns = [
-    # -------- creator analytics --------
-    path('dashboard/', AnalyticsDashboardView.as_view()),
-    path('engagement/', EngagementMetricsView.as_view()),
-
-    # -------- post analytics --------
-    path('posts/<str:post_uid>/', PostAnalyticsView.as_view()),
-    path('posts/<str:post_uid>/impressions/', PostImpressionsView.as_view()),
-]
-
-
-🧠 Event ingestion NOT exposed here
-🧠 This is read-only, aggregated
-
-=========================================================
-api/v1/search/urls.py
-=========================================================
-urlpatterns = [
-    path('', GlobalSearchView.as_view()),
-    path('users/', UserSearchView.as_view()),
-    path('posts/', PostSearchView.as_view()),
-    path('suggestions/', SearchSuggestionsView.as_view()),
-]
-
-=========================================================
-api/v1/premium/urls.py
-=========================================================
-urlpatterns = [
-    path('status/', PremiumStatusView.as_view()),
-    path('upgrade/', UpgradeToPremiumView.as_view()),
-    path('cancel/', CancelPremiumView.as_view()),
-    path('history/', BillingHistoryView.as_view()),
-]
-
-=========================================================
-api/v1/router.py
-=========================================================
-urlpatterns = [
-    path('auth/', include('api.v1.auth.urls')),
-    path('users/', include('api.v1.users.urls')),
-    path('posts/', include('api.v1.posts.urls')),
-    path('comments/', include('api.v1.comments.urls')),
-    path('reactions/', include('api.v1.reactions.urls')),
-    path('feed/', include('api.v1.feed.urls')),
-    path('notifications/', include('api.v1.notifications.urls')),
-    path('analytics/', include('api.v1.analytics.urls')),
-    path('search/', include('api.v1.search.urls')),
-    path('premium/', include('api.v1.premium.urls')),
-]
+Lists
+GET /network/connections/
+GET /network/suggestions/
